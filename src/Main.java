@@ -44,8 +44,8 @@ public class Main {
                 String nVal = br.readLine();
 
                 int size = Integer.parseInt(nSize);
-                List<Integer> list = new LinkedList<>();
-                List<Integer> list2 = new LinkedList<>();
+                List<Integer> list = new LinkedList<>(); // list holding numbers without duplicates
+                List<Integer> list2 = new LinkedList<>(); // list holding copies for duplicate number/s
 
                 // Data stored in an array was moved to linkedList
                 String[] data = nVal.split(" ");
@@ -55,19 +55,21 @@ public class Main {
                     list.add(convert);
                 }
 
-                // Checks i
+                // Checks if size is valid
                 if(size == list.size()) {
                     for(int x = 0; x <= list.size() - 1; x++) {
                         for(int y = x+1; y <= list.size() - 1; y++) {
+                            //check if duplicate number exist in a list
                             if(list.get(x).equals(list.get(y))) {
                                 rep = 1;
-                                list2.add(list.get(x));
+                                list2.add(list.get(x)); // if duplicate exist, store in list2
                             }
                         }
                     }
 
                     int max = list.get(0);
                     int maxDu = list.get(0);
+                    //if no duplicates, find the max value of list
                     if(rep == 0) {
                         for(int x = 0; x <= list.size()-1;x++) {
                             if(max < list.get(x)) {
@@ -76,6 +78,7 @@ public class Main {
                         }
 
                         System.out.println("max number: " + max);
+                    //if duplicate exist in list, find the maximum number in list2
                     } else {
                         for(int y = 0; y <= list2.size()-1;y++) {
                             if(maxDu < list2.get(y)) {
